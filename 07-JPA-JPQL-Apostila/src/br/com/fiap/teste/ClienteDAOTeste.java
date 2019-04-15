@@ -1,6 +1,7 @@
 package br.com.fiap.teste;
 
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -29,6 +30,20 @@ class ClienteDAOTeste {
 		assertNotEquals(0, lista.size());
 	}
 	
+	@Test 
+	void buscarPorEstadotest() {
+		List<Cliente> lista = dao.buscarPorEstado("SP");
+		
+		for (Cliente cliente : lista) {
+			assertEquals("SP", cliente.getEndereco().getCidade().getUf());
+		}
+	}	
+	
+	@Test
+	void buscarPorDiasReservaTest() {
+		List<Cliente> lista = dao.buscarPorDiasReserva(10);
+		assertNotEquals(0, lista.size());
+	}
 	
 	@Test
 	void BuscarPorNomeTest() {

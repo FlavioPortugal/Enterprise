@@ -29,4 +29,20 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements C
 				.getResultList();
 	}
 
+	@Override
+	public List<Cliente> buscarPorEstado(String estado) {
+		// TODO Auto-generated method stub
+		return em.createQuery("From Cliente c where c.endereco.cidade.uf = :P",Cliente.class)
+				.setParameter("P", estado)
+				.getResultList();
+	}
+
+	@Override
+	public List<Cliente> buscarPorDiasReserva(int dias) {
+		// TODO Auto-generated method stub
+		return em.createQuery("select r.cliente from Reserva r where r.numeroDias = :d",Cliente.class)
+				.setParameter("d", dias)
+				.getResultList();
+	}
+
 }
