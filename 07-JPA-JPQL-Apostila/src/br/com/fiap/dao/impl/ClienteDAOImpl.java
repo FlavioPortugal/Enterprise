@@ -17,6 +17,7 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements C
 	@Override
 	public List<Cliente> listar() {
 		TypedQuery<Cliente> query = em.createQuery("From Cliente", Cliente.class);
+		query.setMaxResults(3);
 		// TODO Auto-generated method stub
 		return query.getResultList();
 	}
